@@ -1,0 +1,123 @@
+Practice:
+    id:pr
+    type:'Киртан'
+    time:'15'
+
+    normal_color: (255/255, 255/255, 255/255, 1)
+    pressed_color: (255/255, 165/255, 0/255, 1)
+    my_background_color:(0/255, 0/255, 0/255, 1)
+    contur_color:(255/255, 255/255, 255/255, 1)
+    a:4
+    r:20
+    debug_color:(0, 0, 0, 1)
+    canvas.before:
+        Color:
+            rgba: root.contur_color
+
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [self.r]
+
+        Color:
+            rgba: root.my_background_color
+        RoundedRectangle:
+            size: self.width-self.a, self.height-self.a
+            pos: self.x+self.a/2, self.y+self.a/2
+            radius: [self.r-self.a/2]
+
+
+    MyButton:
+        size_hint: (0.9,1)
+
+        ImageBtn:
+            id:im
+            size_hint: (0.3,.4)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            source:'image/play.png'
+            on_press:
+                im.source = 'image/play_pressed.png'
+                kl.color = root.pressed_color
+                klm.color = root.pressed_color
+            on_release:
+                im.source = 'image/play.png'
+                kl.color= root.normal_color
+                klm.color = root.pressed_color
+                pr.StartPractice()
+            on_touch_up:
+                im.source = 'image/play.png'
+                kl.color=root.normal_color
+                klm.color=root.normal_color
+
+        LabelBtn:
+            id:kl
+            size_hint: (0.6,1)
+
+            text:root.type
+            color: root.normal_color
+
+            on_press:
+                im.source = 'image/play_pressed.png'
+                kl.color = root.pressed_color
+                klm.color = root.pressed_color
+            on_release:
+                im.source = 'image/play.png'
+                kl.color= root.normal_color
+                klm.color= root.normal_color
+                pr.StartPractice()
+            on_touch_up:
+                im.source = 'image/play.png'
+                kl.color=root.normal_color
+                klm.color=root.normal_color
+
+        LabelBtn:
+            id:klm
+            size_hint: (0.4,1)
+            text:root.time +' мин'
+            color: root.normal_color
+
+            on_press:
+                im.source = 'image/play_pressed.png'
+                kl.color = root.pressed_color
+                klm.color = root.pressed_color
+            on_release:
+                im.source = 'image/play.png'
+                kl.color= root.normal_color
+                klm.color= root.normal_color
+                pr.StartPractice()
+            on_touch_up:
+                im.source = 'image/play.png'
+                kl.color=root.normal_color
+                klm.color=root.normal_color
+
+
+
+
+    MyButton:
+        id: sb
+        size_hint: (0.3,.4)
+        pos_hint: {'center_x': .5, 'center_y': .5}
+
+
+
+        Label:
+            size_hint: (0.2,1)
+            text:'|'
+
+        ImageBtn:
+            id:sett
+            size_hint: (0.8,1)
+            source: 'image/settings.png'
+            on_press:
+                self.source = 'image/settings_pressed.png'
+            on_release:
+                self.source = 'image/settings.png'
+                pr.ChangeSettings()
+            on_touch_up:
+                self.source = 'image/settings.png'
+
+
+
+
+
+

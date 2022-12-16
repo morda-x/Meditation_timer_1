@@ -1,0 +1,28 @@
+ToggleButton:
+    size_hint_x: None
+    width:50
+    group:'time'
+    background_color: (0,0,0,0)
+    down_color:(1,1,1,1)
+    font_size:20
+    a:4
+    c: (0,0,0,0)
+    r:20
+    canvas.before:
+        Color:
+            rgba: self.c
+
+        RoundedRectangle:
+            size: (self.width, self.height/2)
+            pos: (self.x, self.y+self.height/2/2)
+            radius: [self.r]
+
+        Color:
+            rgba: (0/255, 0/255, 0/255, 1)
+        RoundedRectangle:
+            size: self.width-self.a, self.height/2-self.a
+            pos: self.x+self.a/2, self.y+self.a/2+self.height/2/2
+            radius: [self.r-self.a/2]
+    on_state:
+        if self.state == 'down': self.c = self.down_color
+        if self.state != 'down': self.c = (0,0,0,0)

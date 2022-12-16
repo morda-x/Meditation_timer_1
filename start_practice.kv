@@ -1,0 +1,46 @@
+ModalView:
+    size_hint: 1, 1
+    debug_color:(1, 0, 0, 1)
+    style:'Киртан'
+    time:'15:00'
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: 1, 1
+        canvas.before:
+            Color:
+                rgba: root.debug_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint: 1, .1
+            Label:
+                id: timer
+                text:root.style
+        BoxLayout:
+            size_hint: 1, .2
+        BoxLayout:
+            size_hint: 1, .2
+            Label:
+                text:root.time
+                font_size:60
+        BoxLayout:
+            size_hint: 1, .2
+
+            ImageBtn:
+                id: ppbtn
+                stat:'play'
+                size_hint: 1, 1
+                source:'image/play.png'
+
+
+
+
+
+
+        BoxLayout:
+            size_hint: 1, .2
+        BoxLayout:
+            size_hint: 1, .2
+

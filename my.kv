@@ -1,0 +1,117 @@
+ScreenManagment:
+    MainScreen:
+    KirtanScreen:
+    MeditationScreen:
+    SetupScreen:
+
+<MainScreen>
+    name:'main_screen'
+    debug_color:(0, 0, 0, 1)
+    #debug_color:(0, 0, 0, 1)
+    BoxLayout:
+        orientation:'vertical'
+        Label:
+
+            text:'Таймер киртана и медитации'
+            size_hint: (0.5,0.1)
+
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        # просто отступ
+        BoxLayout:
+            size_hint: (1,0.2)
+            canvas.before:
+                Color:
+                    rgba:  root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        BoxLayout:
+            size_hint: (0.7,0.7)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            ScrollView:
+                id: sw
+                do_scroll_x: False
+                do_scroll_y: True
+                scroll_timeout:100
+
+                Place_for_practice:
+                    id:pfp
+                    cols:1
+                    padding: 5
+                    row_default_height:sw.height/8
+                    col_default_width: sw.width-5*2
+                    size_hint: None, None
+                    #pos_hint: {'center_x': .5, 'center_y': .5}
+                    spacing: 7
+                    height: self.minimum_height
+                    canvas.before:
+                        Color:
+                            rgba: root.debug_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+        BoxLayout:
+            size_hint: (0.6,0.10)
+            padding:5
+            pos_hint: {'center_x': .5, 'center_y': 0}
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            LabelBtn:
+                text:'+ добавить практику'
+                center: root.center
+                a:4
+                c:(255/255, 255/255, 255/255, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.c
+
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20,]
+
+                    Color:
+                        rgba: (0/255, 0/255, 0/255, 1)
+                    RoundedRectangle:
+                        size: self.width-self.a, self.height-self.a
+                        pos: self.x+self.a/2, self.y+self.a/2
+                        radius: [20-self.a/2,]
+                on_press:
+                    self.c=((255/255, 165/255, 0/255, 1))
+                on_release:
+                    self.c=((255/255, 255/255, 255/255, 1))
+                    pfp.ShowPopup()
+                on_touch_up:
+                    self.c=((255/255, 255/255, 255/255, 1))
+
+
+
+
+<SetupScreen>:
+    name:'main_screen'
+
+
+<SecondScreen>:
+    name:'med_screen'
+

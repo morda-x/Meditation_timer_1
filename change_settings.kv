@@ -1,0 +1,177 @@
+ModalView:
+    id:mw
+    size_hint: .8, .35
+    debug_color:(0, 0, 0, 1)
+    contur_color:(255/255, 215/255, 0/255, 1)
+    canvas.before:
+        Color:
+            rgba: self.debug_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation:'vertical'
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:1,.2
+
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            LabelBtn:
+                id: kirt
+                text:'Киртан'
+                is_pressed:1
+                a:4
+                c:(255/255, 215/255, 0/255, 1)
+                bc:(0/255, 0/255, 0/255, .9)
+                r:20
+                canvas.before:
+                    Color:
+                        rgba: self.c
+
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [self.r,0,0,self.r]
+
+                    Color:
+                        rgba: self.bc
+                    RoundedRectangle:
+                        size: self.width-self.a, self.height-self.a
+                        pos: self.x+self.a/2, self.y+self.a/2
+                        radius: [self.r-self.a/2,0,0,self.r-self.a/2]
+                on_press:
+                    kirt.c=(255/255, 215/255, 0/255, 1)
+                    kirt.bc=(0,0,0,.9)
+                    kirt.color= (255/255, 215/255, 0/255, 1)
+                    kirt.is_pressed=1
+                    med.c =(255/255, 255/255, 255/255, 1)
+                    med.bc=(0,0,0,1)
+                    med.color = (255/255, 255/255, 255/255, 1)
+                    med.is_pressed = 0
+
+
+            LabelBtn:
+                id:med
+                text:'Медитация'
+                is_pressed: 0
+                a:4
+                c:(255/255, 255/255, 255/255, 1)
+                bc:(0, 0, 0, 1)
+                r:20
+                canvas.before:
+                    Color:
+                        rgba: self.c
+
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [0,self.r,self.r,0]
+
+                    Color:
+                        rgba: self.bc
+                    RoundedRectangle:
+                        size: self.width-self.a, self.height-self.a
+                        pos: self.x+self.a/2, self.y+self.a/2
+                        radius: [0,self.r-self.a/2,self.r-self.a/2,0]
+                on_press:
+                    kirt.c=(255/255, 255/255, 255/255, 1)
+                    kirt.bc=(0,0,0,1)
+                    kirt.color = (255/255, 255/255, 255/255, 1)
+                    kirt.is_pressed=0
+                    med.c =(0/255, 255/255, 127/255, 1)
+                    med.bc=(0,0,0,.9)
+                    med.color = (0/255, 255/255, 127/255, 1)
+                    med.is_pressed=1
+
+
+
+
+        BoxLayout:
+            size_hint:1,.6
+            padding:4
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            GorScroll:
+                id:scr
+
+
+
+        BoxLayout:
+            size_hint:1,.2
+            spacing:2
+            canvas.before:
+                Color:
+                    rgba: root.debug_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            LabelBtn:
+                id: CloseBtn
+                text:'Удалить'
+                a:4
+                c:(255/255, 255/255, 255/255, 1)
+                r:20
+                canvas.before:
+                    Color:
+                        rgba: self.c
+
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [self.r]
+
+                    Color:
+                        rgba: (0/255, 0/255, 0/255, 1)
+                    RoundedRectangle:
+                        size: self.width-self.a, self.height-self.a
+                        pos: self.x+self.a/2, self.y+self.a/2
+                        radius: [self.r-self.a/2]
+                on_press:
+                    self.c=((255/255, 165/255, 0/255, 1))
+                on_release:
+                    self.c=((255/255, 255/255, 255/255, 1))
+
+                on_touch_up:
+                    self.c=((255/255, 255/255, 255/255, 1))
+
+            LabelBtn:
+                id:SaveBtn
+                text:'Сохранить'
+                a:4
+                c:(255/255, 215/255, 0/255, 1)
+                bc:(0/255, 0/255, 0/255, .9)
+                r:20
+                canvas.before:
+                    Color:
+                        rgba: (255/255, 255/255, 255/255, 1)
+
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [self.r]
+
+                    Color:
+                        rgba: self.bc
+                    RoundedRectangle:
+                        size: self.width-self.a, self.height-self.a
+                        pos: self.x+self.a/2, self.y+self.a/2
+                        radius: [self.r-self.a/2]
+                on_press:
+                    self.c=(255/255, 165/255, 0/255, 1)
+                on_release:
+                    self.c=(255/255, 255/255, 255/255, 1)
+                on_touch_up:
+                    self.c=(255/255, 255/255, 255/255, 1)
